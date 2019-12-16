@@ -1,0 +1,14 @@
+
+:host { // styling the component host
+  display: block;
+  background-color: white;
+
+  button {
+    background-color: red;
+  }
+
+  ::ng-deep a { // removes attribute Mangic for encapsulation
+    background-color: yellow;
+  }
+}
+// :host button {}
