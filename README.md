@@ -6,6 +6,8 @@
 # Repo 
 - https://github.com/netTrek/taxTraining
 
+# ng new cmd to start
+ng new taxTraining --routing --style scss --prefix tax
 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20.
