@@ -1,4 +1,35 @@
 <p>images from http://placekitten.com/</p>
+
+<h4>selected userInd: {{selectdUsrInd}}</h4>
+<ul>
+  <li
+    [class.selected]="0 === this.selectdUsrInd"
+    (click)="selectUsrInd(0)">user 1</li>
+  <li
+    [class.selected]="1 === this.selectdUsrInd"
+    (click)="selectUsrInd(1)">user 2</li>
+  <li
+    [class.selected]="2 === this.selectdUsrInd"
+    (click)="selectUsrInd(2)">user 3</li>
+  <li
+    [class.selected]="3 === this.selectdUsrInd"
+    (click)="selectUsrInd(3)">user 4</li>
+</ul>
+
+
+<div>not selected</div>
+<div class="selected">selected</div>
+
+<div [class.selected]="isSelected"
+  (click)="toggleSelection( 'toggle', $event )">{{isSelected}}</div>
+
+
+<div class="colored">using colored css class</div>
+<div class="bind-me">green font via css class</div>
+<div class="saban"
+  [class]="classList">binding css classes</div>
+
+
 <div>{{name}}</div>
 <div>{{getName()}}</div>
 <div>{{getName('Mr. ')}}</div>

@@ -13,12 +13,13 @@ export class CountdownComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.startedIntervalID = window.setInterval ( () => {
-      this.percent -= 1;
+      this.percent -= 5;
       if ( this.percent <= 0 ) {
         this.stopInterval ();
       }
-    }, 1000 );
+    }, 100 );
   }
 
   private stopInterval() {

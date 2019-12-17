@@ -1,5 +1,18 @@
+.selected {
+  text-decoration: underline;
+  font-weight: bolder;
+}
+
 .colored {
   width: 100px;
   height: auto;
-  background-color: green;
+  background-color: yellow;
+}
+
+.bind-me {
+  color: green;
+}
+
+.saban {
+  text-decoration: underline;
 }
