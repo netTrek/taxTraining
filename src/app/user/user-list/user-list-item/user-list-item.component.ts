@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostBinding, HostListener, Input, OnInit, Output } from '@angular/core';
 import { User } from '../../user';
 
 @Component({
@@ -12,11 +12,14 @@ export class UserListItemComponent implements OnInit {
   @Output() selectUsr: EventEmitter<User>
   = new EventEmitter();
 
+  @Input()
+  @HostBinding('class.selected')
+  isSelected = false;
   constructor() { }
 
   ngOnInit() {
   }
-
+  @HostListener('click')
   triggerCustomEvent() {
     this.selectUsr.emit( this.user );
   }

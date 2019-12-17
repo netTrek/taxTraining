@@ -3,6 +3,7 @@
   *ngFor="let user of userList"
   [user]="user"
   (selectUsr)="selectUsr($event)"
-  [class.selected]="selectedUser === user"
+  [isSelected]="selectedUser === user"
 >
 </tax-user-list-item>
+<!--  [class.selected]="selectedUser === user"-->
