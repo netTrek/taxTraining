@@ -1,1 +1,16 @@
-<p>binding-samples works!</p>
+<p>images from http://placekitten.com/</p>
+<div>{{name}}</div>
+<div>{{getName()}}</div>
+<div>{{getName('Mr. ')}}</div>
+<div>{{getName('Hello ')}}</div>
+<div>{{getName( prefixValue )}}</div>
+<!--
+<div>never do that !!!! {{ 1 + 2 }}</div>
+-->
+<div style="color: red" [innerText]="'hello '+name"></div>
+<img src="assets/img/{{catFile}}" alt="my cat" width="10%">
+<img [src]="catFileWithPath" alt="my cat" width="10%">
+<img [attr.src]="catFileWithPath" alt="my cat" width="10%">
+<div [style.color]="fontColor"  [innerHTML]="html"></div>
+<div class="colored" [style.width.px]="width" >green</div>
+<button (click)="chgImg()">change image</button>
