@@ -1,0 +1,8 @@
+<h4>{{selectedUser | json }}</h4>
+<tax-user-list-item
+  *ngFor="let user of userList"
+  [user]="user"
+  (selectUsr)="selectUsr($event)"
+  [class.selected]="selectedUser === user"
+>
+</tax-user-list-item>
