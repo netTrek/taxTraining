@@ -9,8 +9,8 @@ import { User } from '../user';
 export class UserListComponent implements OnInit {
 
   userList: User[] = [
-    {firstname: 'saban', lastname: 'ü'},
-    {firstname: 'peter', lastname: 'm'}
+    {firstname: 'saban', lastname: 'ü'}/*,
+    {firstname: 'peter', lastname: 'm'}*/
   ];
   selectedUser: User;
   constructor() { }

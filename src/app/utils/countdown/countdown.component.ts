@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 @Component ( {
   selector   : 'tax-countdown',
   templateUrl: './countdown.component.html',
   styleUrls  : [ './countdown.component.scss' ]
 } )
-export class CountdownComponent implements OnInit {
+export class CountdownComponent implements OnInit, OnDestroy {
   percent = 100;
   private startedIntervalID: number;
 
@@ -23,7 +23,14 @@ export class CountdownComponent implements OnInit {
   }
 
   private stopInterval() {
-    window.clearInterval ( this.startedIntervalID );
+    if ( this.startedIntervalID ) {
+      window.clearInterval ( this.startedIntervalID );
+      this.startedIntervalID = undefined;
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.stopInterval();
   }
 
 }
