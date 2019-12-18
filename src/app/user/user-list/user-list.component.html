@@ -19,7 +19,10 @@
                   [value]="selectedUser?.lastname">
 <ng-container *ngIf="selectedUser; else addTemp">
   <button (click)="update( firstname.value, lastname.value)">update</button>
-  <button (click)="delete()" taxDangerBtn>[-] delete</button>
+  <button (confirmed)="delete()"
+          taxDangerBtn="do you wand to del {{selectedUser.firstname}}"
+          taxDangerBtnCounter="123"
+  >[-] delete</button>
 </ng-container>
 <ng-template #addTemp>
   <button (click)="add( firstname.value, lastname.value)">[+] add new User</button>
