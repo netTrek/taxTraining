@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
+import { AppServiceToDeleteLater } from '../../app.service.to-delete-later';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'tax-user-list',
@@ -8,24 +10,13 @@ import { User } from '../user';
 })
 export class UserListComponent implements OnInit {
 
-  userList: User[] = [
-    {firstname: 'saban', lastname: 'ü'}/*,
-    {firstname: 'peter', lastname: 'm'}*/
-  ];
   selectedUser: User;
 
-  get selectedInd(): number {
-    return this.userList.indexOf ( this.selectedUser );
-  }
-
-  constructor() {
+  constructor( public $myService: AppServiceToDeleteLater,
+               public $user: UserService ) {
   }
 
   ngOnInit() {
-    // for ( const user of this.userList ) {
-    //   console.log ( user );
-    // }
-    this.selectedUser = this.userList[0];
   }
 
   selectUsr( user: User ) {
@@ -33,21 +24,21 @@ export class UserListComponent implements OnInit {
       this.selectedUser = undefined;
     } else {
       this.selectedUser = user;
+      // this.$myService.val = user.firstname;
     }
   }
 
   add( firstname: string, lastname: string ) {
-    this.selectedUser = { firstname, lastname };
-    this.userList.push( this.selectedUser );
+    this.selectedUser = this.$user.add( {firstname, lastname });
   }
 
   update( firstname: string, lastname: string ) {
-    this.userList [this.selectedInd] =
-    this.selectedUser = { firstname, lastname };
+    this.selectedUser = this.$user.update( this.selectedUser, firstname, lastname  );
   }
 
   delete() {
-    this.userList.splice( this.selectedInd, 1 );
-    this.selectedUser = undefined;
+    if ( this.$user.delete( this.selectedUser ) ) {
+      this.selectedUser = undefined;
+    }
   }
 }

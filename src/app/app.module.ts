@@ -16,6 +16,7 @@ import localeData4DE from '@angular/common/locales/de';
 import { registerLocaleData } from '@angular/common';
 import { ReversePipe } from './utils/reverse/reverse.pipe';
 import { RxjsSamplesModule } from './rxjs-samples/rxjs-samples.module';
+import { AppServiceToDeleteLater } from './app.service.to-delete-later';
 
 registerLocaleData( localeData4SQ );
 registerLocaleData( localeData4DE );
@@ -37,7 +38,8 @@ registerLocaleData( localeData4DE );
     RxjsSamplesModule
   ],
   providers: [
-    {provide: LOCALE_ID, useValue: 'sq'}
+    {provide: LOCALE_ID, useValue: 'sq'},
+    AppServiceToDeleteLater
   ],
   bootstrap: [AppComponent],
   exports: [ReversePipe]
