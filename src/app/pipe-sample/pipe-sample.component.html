@@ -1,0 +1,48 @@
+<ul>
+  <li>ng g m pipeSample --module app </li>
+  <li>ng g c pipe-sample/pipeSample --export --flat</li>
+</ul>
+<hr>
+<ul>
+
+
+  <li><strong>date Samples</strong></li>
+  <li>{{date}}</li>
+  <li>{{date | date }}</li>
+  <li>{{date | date : 'long' }}</li>
+  <li>{{date | date : 'd.M.yy' }}</li>
+  <li>{{date | date : 'long' : '+0900' }}</li>
+  <li>{{date | date : 'long' : '-0400' : 'sq' }}</li>
+
+
+
+
+
+
+  <li><strong>number Samples</strong></li>
+  <li>{{num}}</li>
+  <li>{{num | number}}</li>
+  <li>{{num | number : '.5' : 'sq'}}</li>
+  <li>{{num | number : '.3-5'}}</li>
+  <li>{{num | number : '3.3-5'}}</li>
+  <li>{{num * 1000 | number : '3.3-5' : 'sq'}}</li>
+  <li>{{num * 1000 | number : '3.3-5' : 'de'}}</li>
+  <li>{{num * 1000 | number : '3.3-5' : 'en'}}</li>
+  <li><strong>currency Samples</strong></li>
+  <li>{{num}}</li>
+  <li>{{num | currency}}</li>
+  <li>{{num | currency : 'Lekë' : 'symbol' : '.2' : 'sq'}}</li>
+  <li>{{num | currency : 'EUR'}}</li>
+  <li>{{num | currency : 'EUR' : 'symbol'}}</li>
+  <li>{{num | currency : 'EUR' : 'code'}}</li>
+  <li>{{num | currency : 'EUR' : 'code' : '.5'}}</li>
+  <li><strong>json Samples</strong></li>
+  <li>{{obj}}</li>
+  <li>{{obj | json}}</li>
+  <li>{{obj | json | uppercase }}</li>
+  <li><strong>string Samples</strong></li>
+  <li>{{str}}</li>
+  <li>{{str | uppercase}}</li>
+  <li>{{str | lowercase}}</li>
+
+</ul>
