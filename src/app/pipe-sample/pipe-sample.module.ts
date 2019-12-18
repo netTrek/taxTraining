@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PipeSampleComponent } from './pipe-sample.component';
+import { UtilsModule } from '../utils/utils.module';
 
 
 
@@ -8,7 +9,8 @@ import { PipeSampleComponent } from './pipe-sample.component';
   declarations: [PipeSampleComponent],
   exports: [PipeSampleComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    UtilsModule
   ]
 })
 export class PipeSampleModule { }

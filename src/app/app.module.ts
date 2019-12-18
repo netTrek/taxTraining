@@ -14,6 +14,7 @@ import { PipeSampleModule } from './pipe-sample/pipe-sample.module';
 import localeData4SQ from '../locales/sq';
 import localeData4DE from '@angular/common/locales/de';
 import { registerLocaleData } from '@angular/common';
+import { ReversePipe } from './utils/reverse/reverse.pipe';
 
 registerLocaleData( localeData4SQ );
 registerLocaleData( localeData4DE );
@@ -36,6 +37,7 @@ registerLocaleData( localeData4DE );
   providers: [
     {provide: LOCALE_ID, useValue: 'sq'}
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [ReversePipe]
 })
 export class AppModule { }

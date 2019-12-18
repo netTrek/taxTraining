@@ -1,10 +1,21 @@
 <ul>
   <li>ng g m pipeSample --module app </li>
   <li>ng g c pipe-sample/pipeSample --export --flat</li>
+  <li>ng g p utils/reverse --flat false --export</li>
 </ul>
 <hr>
 <ul>
 
+  <li><strong>list Samples</strong></li>
+  <li>{{list}}</li>
+  <li>{{list | reverse}}</li>
+  <li>{{list | reverse : [7,8,9]}}</li>
+  <li><strong>string Samples</strong></li>
+  <li>{{str}}</li>
+  <li>reverse sample 1 {{str | reverse}}</li>
+  <li>reverse sample 1 {{str | reverse : 'hello' }}</li>
+  <li>{{str | uppercase}}</li>
+  <li>{{str | lowercase}}</li>
 
   <li><strong>date Samples</strong></li>
   <li>{{date}}</li>
@@ -40,9 +51,5 @@
   <li>{{obj}}</li>
   <li>{{obj | json}}</li>
   <li>{{obj | json | uppercase }}</li>
-  <li><strong>string Samples</strong></li>
-  <li>{{str}}</li>
-  <li>{{str | uppercase}}</li>
-  <li>{{str | lowercase}}</li>
 
 </ul>
