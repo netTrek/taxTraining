@@ -1,4 +1,24 @@
 <p>directive-sample works!</p>
+
+<ul>
+<!--
+  will not override the class like [class] binding
+  <li *ngFor="let id of users; index as i; even as e; odd as o"
+      class="even" [ngClass]="classList"
+  >
+-->
+  <!--
+  oldschool
+  <li *ngFor="let id of users; index as i; even as e; odd as o"
+      [class.even]="e" [class.odd]="o"
+  >-->
+  <li *ngFor="let id of users; index as i; even as e; odd as o"
+      [ngClass]="{even: e, odd: o}">
+    index:= {{i}} {{e}} {{o}} vlaue:= {{id}}
+  </li>
+</ul>
+
+
 <button (click)="toggle()">toogle cat</button>
 <!--
 <div *ngIf="showImage">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aperiam architecto ducimus illo laborum maiores quaerat quas sunt voluptates. Assumenda debitis delectus doloribus et laudantium maiores nisi, quisquam recusandae reprehenderit.

@@ -14,6 +14,7 @@ export class DirectiveSampleComponent implements OnInit {
                       3,
                       4
   ];
+  classList = 'bold underlined';
 
   constructor() {
   }

@@ -13,16 +13,14 @@
 >
 </tax-user-list-item>
 
+<input type="text" placeholder="firstname" #firstname
+                  [value]="selectedUser?.firstname">
+<input type="text" placeholder="lastname" #lastname
+                  [value]="selectedUser?.lastname">
 <ng-container *ngIf="selectedUser; else addTemp">
-  <input type="text" placeholder="firstname" #firstname
-  [value]="selectedUser.firstname">
-  <input type="text" placeholder="lastname" #lastname
-  [value]="selectedUser.lastname">
   <button (click)="update( firstname.value, lastname.value)">update</button>
-  <button (click)="delete()">[-] delete</button>
+  <button (click)="delete()" taxDangerBtn>[-] delete</button>
 </ng-container>
 <ng-template #addTemp>
-  <input type="text" placeholder="firstname" #firstname>
-  <input type="text" placeholder="lastname" #lastname>
   <button (click)="add( firstname.value, lastname.value)">[+] add new User</button>
 </ng-template>

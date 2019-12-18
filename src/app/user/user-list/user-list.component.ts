@@ -15,14 +15,17 @@ export class UserListComponent implements OnInit {
   selectedUser: User;
 
   get selectedInd(): number {
-    return this.userList.indexOf( this.selectedUser );
+    return this.userList.indexOf ( this.selectedUser );
   }
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
-    for ( const user of this.userList ) {
-      console.log ( user );
-    }
+    // for ( const user of this.userList ) {
+    //   console.log ( user );
+    // }
+    this.selectedUser = this.userList[0];
   }
 
   selectUsr( user: User ) {
