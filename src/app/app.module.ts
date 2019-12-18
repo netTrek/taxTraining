@@ -8,6 +8,7 @@ import { BindingSamplesModule } from './binding-samples/binding-samples.module';
 import { UtilsModule } from './utils/utils.module';
 import { ContentSampleModule } from './content-sample/content-sample.module';
 import { ViewSampleModule } from './view-sample/view-sample.module';
+import { DirectiveSampleModule } from './directive-sample/directive-sample.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ViewSampleModule } from './view-sample/view-sample.module';
     BindingSamplesModule,
     UtilsModule,
     ContentSampleModule,
-    ViewSampleModule
+    ViewSampleModule,
+    DirectiveSampleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,40 @@
+<p>directive-sample works!</p>
+<button (click)="toggle()">toogle cat</button>
+<!--
+<div *ngIf="showImage">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aperiam architecto ducimus illo laborum maiores quaerat quas sunt voluptates. Assumenda debitis delectus doloribus et laudantium maiores nisi, quisquam recusandae reprehenderit.
+  <img src="assets/img/cat1.jpeg" alt="cat">
+</div>
+
+<img [src]="catFileWithPath" alt="cat"
+     *ngIf="showImage">
+<img src="assets/img/cat1.jpeg" alt="cat"
+     *ngIf="showImage">
+-->
+
+
+<ng-template [ngIf]="showImage">
+  <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut autem beatae cum delectus doloremque ea eligendi eum facere id, illo incidunt nam nemo nisi non perferendis quas ratione reprehenderit, sint.</div>
+  <img src="assets/img/cat1.jpeg" alt="cat">
+</ng-template>
+<!--
+
+<ul>
+  <li *ngFor="let user of users" *ngIf="users && users.length > 0"></li>
+</ul>
+-->
+
+<ul>
+  <ng-container *ngIf="users && users.length > 0">
+    <li *ngFor="let user of users">---</li>
+  </ng-container>
+</ul>
+
+<!--
+<ul>
+  <ng-container *ngIf="users && users.length > 0">
+    <ng-container *ngFor="let user of users">
+      <li>-&#45;&#45;</li>
+    </ng-container>
+  </ng-container>
+</ul>
+-->

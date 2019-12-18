@@ -13,6 +13,10 @@ export class UserListComponent implements OnInit {
     {firstname: 'peter', lastname: 'm'}*/
   ];
   selectedUser: User;
+
+  get selectedInd(): number {
+    return this.userList.indexOf( this.selectedUser );
+  }
   constructor() { }
 
   ngOnInit() {
@@ -22,6 +26,25 @@ export class UserListComponent implements OnInit {
   }
 
   selectUsr( user: User ) {
-    this.selectedUser = user;
+    if ( this.selectedUser === user) {
+      this.selectedUser = undefined;
+    } else {
+      this.selectedUser = user;
+    }
+  }
+
+  add( firstname: string, lastname: string ) {
+    this.selectedUser = { firstname, lastname };
+    this.userList.push( this.selectedUser );
+  }
+
+  update( firstname: string, lastname: string ) {
+    this.userList [this.selectedInd] =
+    this.selectedUser = { firstname, lastname };
+  }
+
+  delete() {
+    this.userList.splice( this.selectedInd, 1 );
+    this.selectedUser = undefined;
   }
 }
