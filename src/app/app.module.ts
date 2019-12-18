@@ -15,6 +15,7 @@ import localeData4SQ from '../locales/sq';
 import localeData4DE from '@angular/common/locales/de';
 import { registerLocaleData } from '@angular/common';
 import { ReversePipe } from './utils/reverse/reverse.pipe';
+import { RxjsSamplesModule } from './rxjs-samples/rxjs-samples.module';
 
 registerLocaleData( localeData4SQ );
 registerLocaleData( localeData4DE );
@@ -32,7 +33,8 @@ registerLocaleData( localeData4DE );
     ContentSampleModule,
     ViewSampleModule,
     DirectiveSampleModule,
-    PipeSampleModule
+    PipeSampleModule,
+    RxjsSamplesModule
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'sq'}
