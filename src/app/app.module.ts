@@ -18,6 +18,8 @@ import { ReversePipe } from './utils/reverse/reverse.pipe';
 import { RxjsSamplesModule } from './rxjs-samples/rxjs-samples.module';
 import { AppServiceToDeleteLater } from './app.service.to-delete-later';
 import { ErrorHandlingModule } from './error-handling/error-handling.module';
+import { InjectionSamplesModule } from './injection-samples/injection-samples.module';
+import { DEV_NAME, TEAM_NAMES } from './injection-samples/MyCustomInjectionTokens';
 
 registerLocaleData( localeData4SQ );
 registerLocaleData( localeData4DE );
@@ -37,10 +39,14 @@ registerLocaleData( localeData4DE );
     DirectiveSampleModule,
     PipeSampleModule,
     RxjsSamplesModule,
-    ErrorHandlingModule
+    ErrorHandlingModule,
+    InjectionSamplesModule
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'sq'},
+    // {provide: 'saban', useValue: 'saban ünlü'},
+    {provide: DEV_NAME, useValue: 'saban ünlü'},
+    {provide: TEAM_NAMES, useValue: 'saban ünlü', multi: true },
     AppServiceToDeleteLater
   ],
   bootstrap: [AppComponent],
