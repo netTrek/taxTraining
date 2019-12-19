@@ -20,16 +20,19 @@ import { AppServiceToDeleteLater } from './app.service.to-delete-later';
 import { ErrorHandlingModule } from './error-handling/error-handling.module';
 import { InjectionSamplesModule } from './injection-samples/injection-samples.module';
 import { DEV_NAME, TEAM_NAMES } from './injection-samples/MyCustomInjectionTokens';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AppAuthInterceptorService } from './app-auth-interceptor.service';
+import { AppProgressInterceptorService } from './app-progress-interceptor.service';
+import { ProgressHandlerModule } from './progress-handler/progress-handler.module';
 
-registerLocaleData( localeData4SQ );
-registerLocaleData( localeData4DE );
+registerLocaleData ( localeData4SQ );
+registerLocaleData ( localeData4DE );
 
-@NgModule({
+@NgModule ( {
   declarations: [
     AppComponent
   ],
-  imports: [
+  imports     : [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -42,16 +45,28 @@ registerLocaleData( localeData4DE );
     PipeSampleModule,
     RxjsSamplesModule,
     ErrorHandlingModule,
-    InjectionSamplesModule
+    InjectionSamplesModule,
+    ProgressHandlerModule
   ],
-  providers: [
-    {provide: LOCALE_ID, useValue: 'sq'},
+  providers   : [
+    { provide: LOCALE_ID, useValue: 'sq' },
     // {provide: 'saban', useValue: 'saban ünlü'},
-    {provide: DEV_NAME, useValue: 'saban ünlü'},
-    {provide: TEAM_NAMES, useValue: 'saban ünlü', multi: true },
+    {
+      provide : HTTP_INTERCEPTORS,
+      useClass: AppAuthInterceptorService,
+      multi   : true
+    },
+    {
+      provide : HTTP_INTERCEPTORS,
+      useClass: AppProgressInterceptorService,
+      multi   : true
+    },
+    { provide: DEV_NAME, useValue: 'saban ünlü' },
+    { provide: TEAM_NAMES, useValue: 'saban ünlü', multi: true },
     AppServiceToDeleteLater
   ],
-  bootstrap: [AppComponent],
-  exports: [ReversePipe]
-})
-export class AppModule { }
+  bootstrap   : [ AppComponent ],
+  exports     : [ ReversePipe ]
+} )
+export class AppModule {
+}

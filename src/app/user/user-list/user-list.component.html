@@ -9,7 +9,7 @@
   *ngFor="let user of $user.userList$ | async"
   [user]="user"
   (selectUsr)="selectUsr($event)"
-  [isSelected]="selectedUser === user"
+  [isSelected]="selectedUser?.id === user.id"
 >
 </tax-user-list-item>
 
