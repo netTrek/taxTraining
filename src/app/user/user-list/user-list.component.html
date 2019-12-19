@@ -6,7 +6,7 @@
 <!--<h4 *ngIf="!selectedUser">click to select a user</h4>-->
 
 <tax-user-list-item
-  *ngFor="let user of $user.userList"
+  *ngFor="let user of $user.userList$ | async"
   [user]="user"
   (selectUsr)="selectUsr($event)"
   [isSelected]="selectedUser === user"
