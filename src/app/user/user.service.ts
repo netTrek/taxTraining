@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from './user';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { map, tap } from 'rxjs/operators';
@@ -21,18 +21,25 @@ export class UserService {
     this.updateUserList ();
   }
 
+  getUsrById( id: number ): Observable<User> {
+    return this.$http.get<User> ( environment.api + id ).pipe(
+      tap ( () => {}, err => this.$error
+        .sendError('could not load user for id ' + id ) )
+    );
+  }
+
   add( user: User ): Promise<User> {
     // this.userList$.value.push( user );
     // this.userList$.next( this.userList$.value );
     return this.$http.post<User> ( environment.api, user )
-        .pipe (
-          tap (
-            next => this.updateUserList (),
-            error => this.$error.sendError ( 'somethings goes wrong adding a user'
-            )
-          )
-        )
-        .toPromise ();
+               .pipe (
+                 tap (
+                   next => this.updateUserList (),
+                   error => this.$error.sendError ( 'somethings goes wrong adding a user'
+                   )
+                 )
+               )
+               .toPromise ();
     /*
         .subscribe(
           newuser => console.log ( newuser ),
@@ -53,19 +60,20 @@ export class UserService {
                )
                .toPromise ();
   }
-/*
 
-  update( user: User, firstname: string, lastname: string ): User | null {
-    const ind = this.userList$.value.indexOf ( user );
-    if ( ind !== - 1 ) {
-      user                         = { ...user, firstname, lastname };
-      this.userList$.value [ ind ] = user;
-      this.userList$.next ( this.userList$.value );
-      return user;
+  /*
+
+    update( user: User, firstname: string, lastname: string ): User | null {
+      const ind = this.userList$.value.indexOf ( user );
+      if ( ind !== - 1 ) {
+        user                         = { ...user, firstname, lastname };
+        this.userList$.value [ ind ] = user;
+        this.userList$.next ( this.userList$.value );
+        return user;
+      }
+      return null;
     }
-    return null;
-  }
-*/
+  */
 
   delete( user: User ): Promise<undefined> {
     return this.$http.delete<undefined> ( environment.api + user.id )
@@ -78,18 +86,19 @@ export class UserService {
                )
                .toPromise ();
   }
-/*
 
-  delete( user: User ): boolean {
-    const ind = this.userList$.value.indexOf ( user );
-    if ( ind !== - 1 ) {
-      this.userList$.value.splice ( ind, 1 );
-      this.userList$.next ( this.userList$.value );
-      return true;
+  /*
+
+    delete( user: User ): boolean {
+      const ind = this.userList$.value.indexOf ( user );
+      if ( ind !== - 1 ) {
+        this.userList$.value.splice ( ind, 1 );
+        this.userList$.next ( this.userList$.value );
+        return true;
+      }
+      return false;
     }
-    return false;
-  }
-*/
+  */
 
   private updateUserList() {
     this.$http.get<User[]> ( environment.api )

@@ -24,6 +24,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppAuthInterceptorService } from './app-auth-interceptor.service';
 import { AppProgressInterceptorService } from './app-progress-interceptor.service';
 import { ProgressHandlerModule } from './progress-handler/progress-handler.module';
+import { HomeModule } from './home/home.module';
 
 registerLocaleData ( localeData4SQ );
 registerLocaleData ( localeData4DE );
@@ -35,6 +36,7 @@ registerLocaleData ( localeData4DE );
   imports     : [
     BrowserModule,
     AppRoutingModule,
+    HomeModule,
     HttpClientModule,
     UserModule,
     BindingSamplesModule,
