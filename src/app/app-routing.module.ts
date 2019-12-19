@@ -5,10 +5,19 @@ import { PipeSampleComponent } from './pipe-sample/pipe-sample.component';
 import { HomeComponent } from './home/home.component';
 import { UserDetailsComponent } from './user/user-details/user-details.component';
 import { UserDetailResolverService } from './user/user-detail-resolver.service';
+import { ContactComponent } from './contact/contact.component';
+import { MapComponent } from './contact/map/map.component';
+import { FormComponent } from './contact/form/form.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'home', component: HomeComponent },
+  { path: 'contact', component: ContactComponent,
+    children: [
+      {path: '', pathMatch: 'full', redirectTo: 'form'},
+      {path: 'map', component: MapComponent},
+      {path: 'form', component: FormComponent}
+    ] },
   { path: 'user', component: UserComponent },
   {
     path: 'user/:id', component: UserDetailsComponent,
@@ -27,6 +36,7 @@ const routes: Routes = [
   // { path: 'house', component: CarComponent },
   // { path: 'houses/:id', component: ArticleDetails, data: { backPath: 'book'} },
   { path: 'pipes', component: PipeSampleComponent },
+  { path: 'dash', loadChildren: () => import('./dash/dash.module').then(m => m.DashModule) },
   { path: '**', redirectTo: 'user' } // terminate path find - should be the last item!!
 ];
 

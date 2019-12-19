@@ -25,6 +25,7 @@ import { AppAuthInterceptorService } from './app-auth-interceptor.service';
 import { AppProgressInterceptorService } from './app-progress-interceptor.service';
 import { ProgressHandlerModule } from './progress-handler/progress-handler.module';
 import { HomeModule } from './home/home.module';
+import { ContactModule } from './contact/contact.module';
 
 registerLocaleData ( localeData4SQ );
 registerLocaleData ( localeData4DE );
@@ -48,7 +49,8 @@ registerLocaleData ( localeData4DE );
     RxjsSamplesModule,
     ErrorHandlingModule,
     InjectionSamplesModule,
-    ProgressHandlerModule
+    ProgressHandlerModule,
+    ContactModule
   ],
   providers   : [
     { provide: LOCALE_ID, useValue: 'sq' },
