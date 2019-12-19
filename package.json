@@ -9,6 +9,7 @@
     "build": "ng build --prod",
     "build:bundel:stats": "ng build --stats-json",
     "show:stats": "webpack-bundle-analyzer ./dist/taxTraining/stats-es2015.json",
+    "start:rest": "json-server mock/db.json --watch",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
