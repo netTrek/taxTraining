@@ -3,6 +3,7 @@ import { AppServiceToDeleteLater } from './app.service.to-delete-later';
 import { UserService } from './user/user.service';
 import { interval } from 'rxjs';
 import { distinctUntilChanged, filter, take } from 'rxjs/operators';
+import { ErrorHandlingService } from './error-handling/error-handling.service';
 
 /**
  * WIFI: Hotel Albert
@@ -18,8 +19,10 @@ import { distinctUntilChanged, filter, take } from 'rxjs/operators';
 export class AppComponent {
   title = 'taxTraining';
 
-  constructor( public $myService: AppServiceToDeleteLater, $user: UserService ) {
+  constructor( public $myService: AppServiceToDeleteLater, $user: UserService, $error: ErrorHandlingService ) {
     console.log ( $myService );
+    $error.subscribe( n => console.log ( n ) );
+    $error.sendError('Ups ..... an erro');
     interval ( 500 )
       .pipe ( take ( 5 ) )
       .subscribe ( value => {
