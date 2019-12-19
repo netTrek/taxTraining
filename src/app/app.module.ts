@@ -20,6 +20,7 @@ import { AppServiceToDeleteLater } from './app.service.to-delete-later';
 import { ErrorHandlingModule } from './error-handling/error-handling.module';
 import { InjectionSamplesModule } from './injection-samples/injection-samples.module';
 import { DEV_NAME, TEAM_NAMES } from './injection-samples/MyCustomInjectionTokens';
+import { HttpClientModule } from '@angular/common/http';
 
 registerLocaleData( localeData4SQ );
 registerLocaleData( localeData4DE );
@@ -31,6 +32,7 @@ registerLocaleData( localeData4DE );
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     UserModule,
     BindingSamplesModule,
     UtilsModule,

@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { User } from './user';
 import { BehaviorSubject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +14,11 @@ export class UserService {
     {firstname: 'saban', lastname: 'ü'}
   ];
   */
-  userList$: BehaviorSubject<User[]> = new BehaviorSubject([
-    {firstname: 'saban', lastname: 'ü'}
-  ]);
+  userList$: BehaviorSubject<User[]> = new BehaviorSubject([]);
 
-  constructor() { }
+  constructor( private $http: HttpClient ) {
+    this.updateUserList();
+  }
   add( user: User ): User {
     this.userList$.value.push( user );
     this.userList$.next( this.userList$.value );
@@ -41,5 +44,23 @@ export class UserService {
       return true;
     }
     return false;
+  }
+
+  private updateUserList() {
+    this.$http.get<User[]>( environment.api )
+        .subscribe(
+          users => this.userList$.next( users )
+        )
+    ;
+    // this.$http.get<User[]>( environment.api )
+    //     .pipe(
+    //       map( users => users.map( user => (
+    //         { fullname: user.firstname + user.lastname, id: user.id }
+    //       ) ))
+    //     )
+    //     .subscribe(
+    //       users => console.log ( users )
+    //     )
+    // ;
   }
 }

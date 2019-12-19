@@ -32,11 +32,11 @@ export class AppComponent {
     // console.log ( $myService );
     // $error.subscribe( n => console.log ( n ) );
     // $error.sendError('Ups ..... an erro');
-    interval ( 500 )
-      .pipe ( take ( 5 ) )
-      .subscribe ( value => {
-        $user.add ( { firstname: 'saban' + value, lastname: 'ünlü' + value } );
-      } );
+    // interval ( 500 )
+    //   .pipe ( take ( 5 ) )
+    //   .subscribe ( value => {
+    //     $user.add ( { firstname: 'saban' + value, lastname: 'ünlü' + value } );
+    //   } );
     $user.userList$
          .pipe(
            filter( value => !!value )
