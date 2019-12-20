@@ -26,6 +26,7 @@ import { AppProgressInterceptorService } from './app-progress-interceptor.servic
 import { ProgressHandlerModule } from './progress-handler/progress-handler.module';
 import { HomeModule } from './home/home.module';
 import { ContactModule } from './contact/contact.module';
+import { TestingSampleModule } from './testing-sample/testing-sample.module';
 
 registerLocaleData ( localeData4SQ );
 registerLocaleData ( localeData4DE );
@@ -50,7 +51,8 @@ registerLocaleData ( localeData4DE );
     ErrorHandlingModule,
     InjectionSamplesModule,
     ProgressHandlerModule,
-    ContactModule
+    ContactModule,
+    TestingSampleModule
   ],
   providers   : [
     { provide: LOCALE_ID, useValue: 'sq' },
