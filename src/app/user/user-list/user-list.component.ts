@@ -22,7 +22,10 @@ export class UserListComponent implements OnInit {
   }
 
   remove( user: User ) {
-    this.userList.splice( this.userList.indexOf(user), 1 );
+    const id = this.userList.indexOf(user);
+    if ( id !== -1 ) {
+      this.userList.splice( id, 1 );
+    }
   }
 
 }

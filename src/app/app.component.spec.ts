@@ -6,6 +6,7 @@ import { UserComponent } from './user/user.component';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { timer } from 'rxjs';
+import { ErrorHandlingModule } from './error-handling/error-handling.module';
 
 let component: AppComponent;
 let fixture: ComponentFixture<AppComponent>;
@@ -20,6 +21,7 @@ describe('AppComponent', () => {
           {path: '', pathMatch: 'full', redirectTo: 'user'},
           {path: 'user', component: UserComponent}
         ]),
+        ErrorHandlingModule,
         UserModule
       ],
       declarations: [
