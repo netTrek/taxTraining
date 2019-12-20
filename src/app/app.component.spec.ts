@@ -51,7 +51,7 @@ describe('AppComponent', () => {
       .toContain('hello taxTrainingTesting');
   });
 
-  fit ('should redirect to user', async () => {
+  it ('should redirect to user', async () => {
     await router.navigate(['']);
     expect( location.path() ).toBe('/user');
   });
