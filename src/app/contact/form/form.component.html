@@ -1,6 +1,6 @@
-<form [formGroup]="myForm" (ngSubmit)="send()">
+<form [formGroup]="selectedForm" (ngSubmit)="send()">
   <ng-container
-    *ngFor="let inputVo of json.inputs">
+    *ngFor="let inputVo of selectedFormVo.inputs">
     <textarea
       *ngIf="inputVo.type === 'textarea'; else inputTmp"
       [formControlName]="inputVo.key"
@@ -13,6 +13,12 @@
         [placeholder]="inputVo.label"
       >
     </ng-template>
+    <ng-container *ngIf="inputVo.validators?.length > 0">
+      <tax-show-error
+        [controlerName]="inputVo.key"
+        [group]="selectedForm">
+      </tax-show-error>
+    </ng-container>
   </ng-container>
 <!--  <input type="text" formControlName="name">
   <span formGroupName="credentials">
@@ -23,6 +29,8 @@
     </div>&ndash;&gt;
     <input type="password" formControlName="password">
   </span>-->
-  <button type="submit" [disabled]="myForm.invalid">send</button>
-  <button type="reset" [disabled]="myForm.pristine">reset</button>
+  <button type="submit" [disabled]="selectedForm.invalid">send</button>
+  <button type="reset" [disabled]="selectedForm.pristine">reset</button>
 </form>
+
+<button (click)="toggForm()">toggle Form</button>

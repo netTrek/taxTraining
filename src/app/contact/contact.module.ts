@@ -5,11 +5,12 @@ import { MapComponent } from './map/map.component';
 import { FormComponent } from './form/form.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ShowErrorComponent } from './form/show-error/show-error.component';
 
 
 
 @NgModule({
-  declarations: [ContactComponent, MapComponent, FormComponent],
+  declarations: [ContactComponent, MapComponent, FormComponent, ShowErrorComponent],
   imports: [
     CommonModule,
     RouterModule,
