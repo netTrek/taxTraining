@@ -1,3 +1,28 @@
-<form action="">
-  <input type="text">
+<form [formGroup]="myForm" (ngSubmit)="send()">
+  <ng-container
+    *ngFor="let inputVo of json.inputs">
+    <textarea
+      *ngIf="inputVo.type === 'textarea'; else inputTmp"
+      [formControlName]="inputVo.key"
+      [placeholder]="inputVo.label"
+    ></textarea>
+    <ng-template #inputTmp>
+      <input
+        type="{{inputVo.type}}"
+        [formControlName]="inputVo.key"
+        [placeholder]="inputVo.label"
+      >
+    </ng-template>
+  </ng-container>
+<!--  <input type="text" formControlName="name">
+  <span formGroupName="credentials">
+    <input type="email" formControlName="email">
+    &lt;!&ndash;<div *ngIf="email.dirty">
+      <span *ngIf="email?.errors?.required">please enter a mail</span>
+      <span *ngIf="email?.errors?.email">please enter a valid mail</span>
+    </div>&ndash;&gt;
+    <input type="password" formControlName="password">
+  </span>-->
+  <button type="submit" [disabled]="myForm.invalid">send</button>
+  <button type="reset" [disabled]="myForm.pristine">reset</button>
 </form>

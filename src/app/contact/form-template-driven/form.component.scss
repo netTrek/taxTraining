@@ -1,10 +1,7 @@
-input, textarea {
+input {
   width: 100%;
   &.ng-touched.ng-dirty.ng-invalid {
     border-style: solid;
     border-color: red;
   }
-}
-textarea {
-  margin-top: 2px;
 }

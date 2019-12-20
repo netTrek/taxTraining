@@ -1,0 +1,24 @@
+<form #myForm='ngForm' (ngSubmit)="sendData(myForm.value)">
+  <input type="text" ngModel #name="ngModel"
+         name="name"
+         [ngModelOptions]="{updateOn: 'blur'}"
+         placeholder="name">
+  <span ngModelGroup="credentials">
+    <input type="email" ngModel #email="ngModel" name="email" required email placeholder="email">
+    <div *ngIf="email.dirty">
+      <span *ngIf="email?.errors?.required">please enter a mail</span>
+      <span *ngIf="email?.errors?.email">please enter a valid mail</span>
+    </div>
+    <input type="password" ngModel #password="ngModel" name="password" placeholder="password">
+  </span>
+  <button type="submit" [disabled]="myForm.invalid">send</button>
+  <button type="reset" [disabled]="myForm.pristine">reset</button>
+</form>
+<p>{{myForm.value | json}}</p>
+<p>value: {{email.value}}</p>
+<p>valid: {{email.valid}}</p>
+<p>dirty: {{email.dirty}}</p>
+<p>pristine: {{email.pristine}}</p>
+<p>touched: {{email.touched}}</p>
+<p>untouched: {{email.untouched}}</p>
+<p>error: {{email?.errors | json}}</p>
