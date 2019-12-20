@@ -34,7 +34,7 @@ export class FormComponent implements OnInit {
         validators: [ 'required',
                       'email'
         ],
-        value     : 'us@netTrek.de'
+        value     : ''
       },
       {
         key       : 'msg',
