@@ -8,6 +8,7 @@ import { UserDetailResolverService } from './user/user-detail-resolver.service';
 import { ContactComponent } from './contact/contact.component';
 import { MapComponent } from './contact/map/map.component';
 import { FormComponent } from './contact/form/form.component';
+import { ActivteDetailGuardGuard } from './user/activte-detail-guard.guard';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -26,7 +27,7 @@ const routes: Routes = [
     },
     resolve: {
       user: UserDetailResolverService
-    }
+    }, canActivate: [ ActivteDetailGuardGuard ]
   },
   // sample whe to use data - here to return to a prev path.
   // { path: 'car', component: CarComponent },

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { User } from './user';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, timer } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { map, tap } from 'rxjs/operators';
+import { map, mapTo, tap } from 'rxjs/operators';
 import { ErrorHandlingService } from '../error-handling/error-handling.service';
 
 @Injectable ( {
@@ -116,5 +116,9 @@ export class UserService {
     //       users => console.log ( users )
     //     )
     // ;
+  }
+
+  isAdmin(): Observable<boolean> {
+    return timer(1000).pipe( mapTo (true) );
   }
 }

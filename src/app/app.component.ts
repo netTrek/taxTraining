@@ -5,6 +5,7 @@ import { interval } from 'rxjs';
 import { distinctUntilChanged, filter, take } from 'rxjs/operators';
 import { ErrorHandlingService } from './error-handling/error-handling.service';
 import { DEV_NAME, TEAM_NAMES } from './injection-samples/MyCustomInjectionTokens';
+import { NavigationEnd, Router } from '@angular/router';
 
 /**
  * WIFI: Hotel Albert
@@ -26,8 +27,15 @@ export class AppComponent {
     // @Inject('saban') name: string,
     @Inject( DEV_NAME ) name: string,
     @Inject( TEAM_NAMES) names: string[],
-    @Inject( LOCALE_ID) localeId: string
+    @Inject( LOCALE_ID) localeId: string,
+    router: Router
   ) {
+
+    router.events.pipe(
+      filter ( event => event instanceof NavigationEnd )
+    ).subscribe(
+      event => console.log ( event )
+    );
     console.log ( localeId, name, names );
     // console.log ( $myService );
     // $error.subscribe( n => console.log ( n ) );
